@@ -1,10 +1,10 @@
 <template>
   <form class="container">
-    <input type="text" placeholder="First name" required v-model="firstName">
-    <input type="text" placeholder="Last name" required v-model="lastName">
-    <input type="text" placeholder="Gender" required v-model="gender" :class="{male: lowerCaseGender == 'male',
+   <div><input type="text" placeholder="First name" required v-model="firstName"><span v-show="!firstName.length">*</span></div>
+   <div><input type="text" placeholder="Last name" required v-model="lastName"><span v-show="!lastName.length">*</span></div>
+   <div><input type="text" placeholder="Gender" required v-model="gender" :class="{male: lowerCaseGender == 'male',
       female: lowerCaseGender == 'female'
-    }">
+    }"><span v-show="!gender.length">*</span></div>
     <textarea output readonly></textarea>
     <button @click.prevent="userInfo">Display</button>
   </form>
@@ -39,6 +39,7 @@ export default {
     lowerCaseGender(){
       return this.gender.toLowerCase()
     }
+
   }
 }
 
@@ -69,6 +70,14 @@ export default {
 
 .female{
   border: 2px solid pink;
+}
+
+span{
+  color: red;
+}
+
+input{
+  width: 29rem;
 }
 
 </style>
